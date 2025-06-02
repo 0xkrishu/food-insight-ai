@@ -113,212 +113,140 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 p-4 sm:p-6">
-      <main className="w-full max-w-sm mx-auto flex flex-col items-center">
-        <div className="text-center mb-6">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
-            Know Your Food 🍽️
-          </h1>
-          <p className="text-base sm:text-lg text-gray-600">
-            Upload or capture food to get nutrition insights with AI
-          </p>
-        </div>
-
-        <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 w-full">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="hidden"
-            />
-            <button
-              onClick={triggerFileInput}
-              className="flex-1 h-12 bg-blue-500 text-white text-base font-semibold rounded-lg flex items-center justify-center gap-2 transition-all duration-300 hover:bg-blue-600 active:scale-98"
-            >
-              📁 Upload Image
-            </button>
-            <button
-              onClick={handleCapture}
-              className="flex-1 h-12 bg-green-500 text-white text-base font-semibold rounded-lg flex items-center justify-center gap-2 transition-all duration-300 hover:bg-green-600 active:scale-98"
-            >
-              📷 Capture with Camera
-            </button>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+      <main className="container mx-auto px-4 py-12 sm:py-20">
+        <div className="max-w-3xl mx-auto text-center space-y-8">
+          {/* Header Section */}
+          <div className="space-y-4">
+            <h1 className="text-5xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+              Know Your Food 🍽️
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-600 font-medium">
+              Upload or capture food to get nutrition insights with AI
+            </p>
           </div>
 
-          {error && (
-            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg animate-shake text-sm sm:text-base">
-              <p className="text-red-600">{error}</p>
-            </div>
-          )}
-
-          {selectedImage && (
-            <div className="mt-8 animate-fade-in">
-              <div className="relative aspect-video w-full max-w-2xl mx-auto rounded-lg overflow-hidden shadow-md bg-gray-100">
-                <Image
-                  src={selectedImage}
-                  alt="Selected food"
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
+          {/* Main Card */}
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 sm:p-10 border border-white/20">
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="hidden"
+              />
               <button
-                onClick={handleAnalyze}
-                disabled={isAnalyzing}
-                className={`mt-4 w-full sm:w-auto px-8 h-12 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 mx-auto shadow-sm hover:shadow-md text-base sm:text-lg ${
-                  isAnalyzing ? 'opacity-75 cursor-not-allowed' : ''
-                }`}
+                onClick={triggerFileInput}
+                className="group relative h-16 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5 active:translate-y-0"
               >
-                {isAnalyzing ? (
-                  <>
-                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Analyzing...
-                  </>
-                ) : (
-                  <>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
-                    </svg>
-                    Analyze Food
-                  </>
-                )}
+                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative flex items-center justify-center gap-2">
+                  📁 Upload Image
+                </span>
+              </button>
+              
+              <button
+                onClick={handleCapture}
+                className="group relative h-16 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25 hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative flex items-center justify-center gap-2">
+                  📷 Capture with Camera
+                </span>
               </button>
             </div>
-          )}
 
-          {analysisResult && (
-            <div className="mt-8 bg-white rounded-xl p-4 sm:p-6 shadow-lg border border-gray-100 transform transition-all duration-300 hover:shadow-xl animate-fade-in">
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <div className="bg-pink-50 p-2 rounded-xl transform transition-all duration-300 hover:scale-110">
-                    <span className="text-xl sm:text-2xl">🍕</span>
-                  </div>
-                  <div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-gray-800">{analysisResult.foodName}</h2>
-                    <p className="text-xs sm:text-sm text-gray-500">Identified Food Item</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="bg-orange-50 p-2 rounded-xl transform transition-all duration-300 hover:scale-110">
-                    <span className="text-xl sm:text-2xl">🔥</span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800">{analysisResult.calories}</h3>
-                    <p className="text-xs sm:text-sm text-gray-500">Estimated Calories</p>
-                  </div>
-                </div>
-
-                <div className="bg-blue-50 rounded-xl p-4">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-xl sm:text-2xl">🍽️</span>
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Nutrition Facts</h3>
-                  </div>
-                  <div className="grid grid-cols-3 gap-2 sm:gap-4">
-                    <div className="bg-white p-2 sm:p-3 rounded-lg shadow-sm transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                      <p className="text-xs sm:text-sm text-gray-500 mb-1">Carbs</p>
-                      <p className="text-base sm:text-xl font-bold text-blue-600">{analysisResult.nutrition.carbs}g</p>
-                    </div>
-                    <div className="bg-white p-2 sm:p-3 rounded-lg shadow-sm transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                      <p className="text-xs sm:text-sm text-gray-500 mb-1">Protein</p>
-                      <p className="text-base sm:text-xl font-bold text-green-600">{analysisResult.nutrition.protein}g</p>
-                    </div>
-                    <div className="bg-white p-2 sm:p-3 rounded-lg shadow-sm transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                      <p className="text-xs sm:text-sm text-gray-500 mb-1">Fat</p>
-                      <p className="text-base sm:text-xl font-bold text-yellow-600">{analysisResult.nutrition.fat}g</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="bg-purple-50 p-2 rounded-xl transform transition-all duration-300 hover:scale-110">
-                    <span className="text-xl sm:text-2xl">✅</span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-1">Health Rating</h3>
-                    <p className={`inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-sm font-medium transform transition-all duration-300 hover:scale-105 ${
-                      analysisResult.healthiness === 'good'
-                        ? 'bg-green-100 text-green-700 border border-green-200'
-                        : analysisResult.healthiness === 'okay'
-                        ? 'bg-yellow-100 text-yellow-700 border border-yellow-200'
-                        : 'bg-red-100 text-red-700 border border-red-200'
-                    }`}>
-                      {analysisResult.healthiness.charAt(0).toUpperCase() + analysisResult.healthiness.slice(1)}
-                    </p>
-                  </div>
-                </div>
-
-                {analysisResult.suggestions && Array.isArray(analysisResult.suggestions) && (
-                  <div className="bg-green-50 rounded-xl p-4">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-xl sm:text-2xl">💡</span>
-                      <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Health Tips</h3>
-                    </div>
-                    <ul className="space-y-2">
-                      {analysisResult.suggestions.map((suggestion, index) => (
-                        <li
-                          key={index}
-                          className="flex items-start gap-2 bg-white p-3 rounded-lg shadow-sm transform transition-all duration-300 hover:scale-[1.02] hover:shadow-md text-sm sm:text-base"
-                        >
-                          <span className="text-green-500 mt-1">•</span>
-                          <p className="text-gray-600">{suggestion}</p>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {(!analysisResult.suggestions || analysisResult.suggestions.length === 0) && (
-                   <div className="bg-gray-50 rounded-xl p-4 text-center text-gray-600 italic text-sm sm:text-base">
-                     No health suggestions available for this item.
-                   </div>
-                )}
+            {error && (
+              <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm">
+                {error}
               </div>
-            </div>
-          )}
+            )}
+
+            {selectedImage && (
+              <div className="mt-8 space-y-6">
+                <div className="relative aspect-video w-full rounded-xl overflow-hidden shadow-lg bg-gray-100">
+                  <Image
+                    src={selectedImage}
+                    alt="Selected food"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <button
+                  onClick={handleAnalyze}
+                  disabled={isAnalyzing}
+                  className={`w-full h-14 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 hover:-translate-y-0.5 active:translate-y-0 ${
+                    isAnalyzing ? 'opacity-75 cursor-not-allowed' : ''
+                  }`}
+                >
+                  {isAnalyzing ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Analyzing...
+                    </span>
+                  ) : (
+                    'Analyze Food'
+                  )}
+                </button>
+              </div>
+            )}
+
+            {analysisResult && (
+              <div className="mt-8 bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-pink-50 p-3 rounded-xl">
+                      <span className="text-2xl">🍕</span>
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-gray-800">{analysisResult.foodName}</h2>
+                      <p className="text-sm text-gray-500">Identified Food Item</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4">
+                    <div className="bg-blue-50 p-4 rounded-xl">
+                      <p className="text-sm text-gray-500 mb-1">Carbs</p>
+                      <p className="text-xl font-bold text-blue-600">{analysisResult.nutrition.carbs}g</p>
+                    </div>
+                    <div className="bg-green-50 p-4 rounded-xl">
+                      <p className="text-sm text-gray-500 mb-1">Protein</p>
+                      <p className="text-xl font-bold text-green-600">{analysisResult.nutrition.protein}g</p>
+                    </div>
+                    <div className="bg-yellow-50 p-4 rounded-xl">
+                      <p className="text-sm text-gray-500 mb-1">Fat</p>
+                      <p className="text-xl font-bold text-yellow-600">{analysisResult.nutrition.fat}g</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4">
+                    <div className="bg-purple-50 p-3 rounded-xl">
+                      <span className="text-2xl">✅</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800">Health Rating</h3>
+                      <p className={`inline-block px-4 py-1.5 rounded-full text-sm font-medium ${
+                        analysisResult.healthiness === 'good'
+                          ? 'bg-green-100 text-green-700'
+                          : analysisResult.healthiness === 'okay'
+                          ? 'bg-yellow-100 text-yellow-700'
+                          : 'bg-red-100 text-red-700'
+                      }`}>
+                        {analysisResult.healthiness.charAt(0).toUpperCase() + analysisResult.healthiness.slice(1)}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </main>
-
-      {showCamera && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 animate-fade-in">
-          <div className="bg-white rounded-2xl p-4 max-w-lg w-full transform transition-all duration-300 animate-scale-in">
-            <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-gray-900">
-              <Webcam
-                ref={webcamRef}
-                audio={false}
-                screenshotFormat="image/jpeg"
-                videoConstraints={{
-                  facingMode: "environment",
-                  width: { ideal: 1920 },
-                  height: { ideal: 1080 }
-                }}
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div className="flex gap-4 mt-4 justify-center flex-wrap">
-              <button
-                onClick={() => setShowCamera(false)}
-                className="px-6 h-12 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md text-base sm:text-lg"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={captureImage}
-                className="px-6 h-12 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2 shadow-sm hover:shadow-md text-base sm:text-lg"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
-                </svg>
-                Capture
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
