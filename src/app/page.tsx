@@ -34,13 +34,11 @@ export default function Home() {
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      // Validate file type
       if (!file.type.startsWith('image/')) {
         setError('Please select an image file');
         return;
       }
-      
-      // Validate file size (max 5MB)
+
       if (file.size > 5 * 1024 * 1024) {
         setError('Image size should be less than 5MB');
         return;
@@ -115,18 +113,18 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-blue-50 p-4 sm:p-8">
-      <main className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-blue-50 p-4 sm:p-8 md:p-12 lg:p-16">
+      <main className="max-w-lg mx-auto w-full">
         <div className="text-center mb-8 sm:mb-12 animate-fade-in">
-          <h1 className="text-3xl sm:text-5xl font-bold text-gray-800 mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
             Know Your Food 🍽️
           </h1>
-          <p className="text-base sm:text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-prose mx-auto px-2">
             Upload or capture food to get nutrition insights with AI
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-8 mb-8 transform transition-all duration-300 hover:shadow-xl">
+        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 mb-8 transform transition-all duration-300 hover:shadow-xl">
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <input
               ref={fileInputRef}
@@ -137,7 +135,7 @@ export default function Home() {
             />
             <button
               onClick={triggerFileInput}
-              className="flex-1 h-12 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+              className="flex-1 h-12 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 shadow-sm hover:shadow-md text-base sm:text-lg"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
@@ -146,7 +144,7 @@ export default function Home() {
             </button>
             <button
               onClick={handleCapture}
-              className="flex-1 h-12 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+              className="flex-1 h-12 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 shadow-sm hover:shadow-md text-base sm:text-lg"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
@@ -156,7 +154,7 @@ export default function Home() {
           </div>
 
           {error && (
-            <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-lg animate-shake">
+            <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-lg animate-shake text-sm sm:text-base">
               <p className="text-red-600">{error}</p>
             </div>
           )}
@@ -175,7 +173,7 @@ export default function Home() {
               <button
                 onClick={handleAnalyze}
                 disabled={isAnalyzing}
-                className={`mt-4 w-full sm:w-auto px-8 h-12 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 mx-auto shadow-sm hover:shadow-md ${
+                className={`mt-4 w-full sm:w-auto px-8 h-12 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 mx-auto shadow-sm hover:shadow-md text-base sm:text-lg ${
                   isAnalyzing ? 'opacity-75 cursor-not-allowed' : ''
                 }`}
               >
@@ -200,48 +198,48 @@ export default function Home() {
           )}
 
           {analysisResult && (
-            <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 transform transition-all duration-300 hover:shadow-xl animate-fade-in">
+            <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-gray-100 transform transition-all duration-300 hover:shadow-xl animate-fade-in">
               <div className="space-y-6">
                 {/* Food Name Section */}
                 <div className="flex items-center gap-3">
                   <div className="bg-pink-50 p-2 rounded-xl transform transition-all duration-300 hover:scale-110">
-                    <span className="text-2xl">🍕</span>
+                    <span className="text-xl sm:text-2xl">🍕</span>
                   </div>
                   <div>
                     <h2 className="text-xl sm:text-2xl font-bold text-gray-800">{analysisResult.foodName}</h2>
-                    <p className="text-sm text-gray-500">Identified Food Item</p>
+                    <p className="text-xs sm:text-sm text-gray-500">Identified Food Item</p>
                   </div>
                 </div>
 
                 {/* Calories Section */}
                 <div className="flex items-center gap-3">
                   <div className="bg-orange-50 p-2 rounded-xl transform transition-all duration-300 hover:scale-110">
-                    <span className="text-2xl">🔥</span>
+                    <span className="text-xl sm:text-2xl">🔥</span>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800">{analysisResult.calories}</h3>
-                    <p className="text-sm text-gray-500">Estimated Calories</p>
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800">{analysisResult.calories}</h3>
+                    <p className="text-xs sm:text-sm text-gray-500">Estimated Calories</p>
                   </div>
                 </div>
 
                 {/* Nutrition Section */}
                 <div className="bg-blue-50 rounded-xl p-4">
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-2xl">🍽️</span>
-                    <h3 className="text-lg font-semibold text-gray-800">Nutrition Facts</h3>
+                    <span className="text-xl sm:text-2xl">🍽️</span>
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Nutrition Facts</h3>
                   </div>
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="bg-white p-3 rounded-lg shadow-sm transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                      <p className="text-sm text-gray-500 mb-1">Carbs</p>
-                      <p className="text-xl font-bold text-blue-600">{analysisResult.nutrition.carbs}g</p>
+                  <div className="grid grid-cols-3 gap-2 sm:gap-4">
+                    <div className="bg-white p-2 sm:p-3 rounded-lg shadow-sm transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                      <p className="text-xs sm:text-sm text-gray-500 mb-1">Carbs</p>
+                      <p className="text-base sm:text-xl font-bold text-blue-600">{analysisResult.nutrition.carbs}g</p>
                     </div>
-                    <div className="bg-white p-3 rounded-lg shadow-sm transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                      <p className="text-sm text-gray-500 mb-1">Protein</p>
-                      <p className="text-xl font-bold text-green-600">{analysisResult.nutrition.protein}g</p>
+                    <div className="bg-white p-2 sm:p-3 rounded-lg shadow-sm transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                      <p className="text-xs sm:text-sm text-gray-500 mb-1">Protein</p>
+                      <p className="text-base sm:text-xl font-bold text-green-600">{analysisResult.nutrition.protein}g</p>
                     </div>
-                    <div className="bg-white p-3 rounded-lg shadow-sm transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                      <p className="text-sm text-gray-500 mb-1">Fat</p>
-                      <p className="text-xl font-bold text-yellow-600">{analysisResult.nutrition.fat}g</p>
+                    <div className="bg-white p-2 sm:p-3 rounded-lg shadow-sm transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                      <p className="text-xs sm:text-sm text-gray-500 mb-1">Fat</p>
+                      <p className="text-base sm:text-xl font-bold text-yellow-600">{analysisResult.nutrition.fat}g</p>
                     </div>
                   </div>
                 </div>
@@ -249,11 +247,11 @@ export default function Home() {
                 {/* Healthiness Section */}
                 <div className="flex items-center gap-3">
                   <div className="bg-purple-50 p-2 rounded-xl transform transition-all duration-300 hover:scale-110">
-                    <span className="text-2xl">✅</span>
+                    <span className="text-xl sm:text-2xl">✅</span>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-1">Health Rating</h3>
-                    <p className={`inline-block px-4 py-1.5 rounded-full text-sm font-medium transform transition-all duration-300 hover:scale-105 ${
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-1">Health Rating</h3>
+                    <p className={`inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-sm font-medium transform transition-all duration-300 hover:scale-105 ${
                       analysisResult.healthiness === 'good'
                         ? 'bg-green-100 text-green-700 border border-green-200'
                         : analysisResult.healthiness === 'okay'
@@ -269,14 +267,14 @@ export default function Home() {
                 {analysisResult.suggestions && Array.isArray(analysisResult.suggestions) && (
                   <div className="bg-green-50 rounded-xl p-4">
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-2xl">💡</span>
-                      <h3 className="text-lg font-semibold text-gray-800">Health Tips</h3>
+                      <span className="text-xl sm:text-2xl">💡</span>
+                      <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Health Tips</h3>
                     </div>
                     <ul className="space-y-2">
                       {analysisResult.suggestions.map((suggestion, index) => (
                         <li
                           key={index}
-                          className="flex items-start gap-2 bg-white p-3 rounded-lg shadow-sm transform transition-all duration-300 hover:scale-[1.02] hover:shadow-md"
+                          className="flex items-start gap-2 bg-white p-3 rounded-lg shadow-sm transform transition-all duration-300 hover:scale-[1.02] hover:shadow-md text-sm sm:text-base"
                         >
                           <span className="text-green-500 mt-1">•</span>
                           <p className="text-gray-600">{suggestion}</p>
@@ -286,7 +284,7 @@ export default function Home() {
                   </div>
                 )}
                 {(!analysisResult.suggestions || analysisResult.suggestions.length === 0) && (
-                   <div className="bg-gray-50 rounded-xl p-4 text-center text-gray-600 italic">
+                   <div className="bg-gray-50 rounded-xl p-4 text-center text-gray-600 italic text-sm sm:text-base">
                      No health suggestions available for this item.
                    </div>
                 )}
@@ -299,7 +297,7 @@ export default function Home() {
       {/* Camera Modal */}
       {showCamera && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 animate-fade-in">
-          <div className="bg-white rounded-2xl p-4 max-w-2xl w-full transform transition-all duration-300 animate-scale-in">
+          <div className="bg-white rounded-2xl p-4 max-w-lg w-full transform transition-all duration-300 animate-scale-in">
             <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-gray-900">
               <Webcam
                 ref={webcamRef}
@@ -313,16 +311,16 @@ export default function Home() {
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="flex gap-4 mt-4 justify-center">
+            <div className="flex gap-4 mt-4 justify-center flex-wrap">
               <button
                 onClick={() => setShowCamera(false)}
-                className="px-6 h-12 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md"
+                className="px-6 h-12 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md text-base sm:text-lg"
               >
                 Cancel
               </button>
               <button
                 onClick={captureImage}
-                className="px-6 h-12 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2 shadow-sm hover:shadow-md"
+                className="px-6 h-12 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2 shadow-sm hover:shadow-md text-base sm:text-lg"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
