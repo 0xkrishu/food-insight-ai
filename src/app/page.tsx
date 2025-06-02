@@ -113,19 +113,19 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-blue-50 p-4 sm:p-8 md:p-12 lg:p-16">
-      <main className="max-w-lg mx-auto w-full">
-        <div className="text-center mb-8 sm:mb-12 animate-fade-in">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 p-4 sm:p-6">
+      <main className="w-full max-w-sm mx-auto flex flex-col items-center">
+        <div className="text-center mb-6">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
             Know Your Food 🍽️
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-prose mx-auto px-2">
+          <p className="text-base sm:text-lg text-gray-600">
             Upload or capture food to get nutrition insights with AI
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 mb-8 transform transition-all duration-300 hover:shadow-xl">
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+        <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 w-full">
+          <div className="flex flex-col sm:flex-row gap-4">
             <input
               ref={fileInputRef}
               type="file"
@@ -135,32 +135,26 @@ export default function Home() {
             />
             <button
               onClick={triggerFileInput}
-              className="flex-1 h-12 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 shadow-sm hover:shadow-md text-base sm:text-lg"
+              className="flex-1 h-12 bg-blue-500 text-white text-base font-semibold rounded-lg flex items-center justify-center gap-2 transition-all duration-300 hover:bg-blue-600 active:scale-98"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-              </svg>
-              Upload Image
+              📁 Upload Image
             </button>
             <button
               onClick={handleCapture}
-              className="flex-1 h-12 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 shadow-sm hover:shadow-md text-base sm:text-lg"
+              className="flex-1 h-12 bg-green-500 text-white text-base font-semibold rounded-lg flex items-center justify-center gap-2 transition-all duration-300 hover:bg-green-600 active:scale-98"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
-              </svg>
-              Capture with Camera
+              📷 Capture with Camera
             </button>
           </div>
 
           {error && (
-            <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-lg animate-shake text-sm sm:text-base">
+            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg animate-shake text-sm sm:text-base">
               <p className="text-red-600">{error}</p>
             </div>
           )}
 
           {selectedImage && (
-            <div className="mb-8 animate-fade-in">
+            <div className="mt-8 animate-fade-in">
               <div className="relative aspect-video w-full max-w-2xl mx-auto rounded-lg overflow-hidden shadow-md bg-gray-100">
                 <Image
                   src={selectedImage}
@@ -198,9 +192,8 @@ export default function Home() {
           )}
 
           {analysisResult && (
-            <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-gray-100 transform transition-all duration-300 hover:shadow-xl animate-fade-in">
+            <div className="mt-8 bg-white rounded-xl p-4 sm:p-6 shadow-lg border border-gray-100 transform transition-all duration-300 hover:shadow-xl animate-fade-in">
               <div className="space-y-6">
-                {/* Food Name Section */}
                 <div className="flex items-center gap-3">
                   <div className="bg-pink-50 p-2 rounded-xl transform transition-all duration-300 hover:scale-110">
                     <span className="text-xl sm:text-2xl">🍕</span>
@@ -211,7 +204,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Calories Section */}
                 <div className="flex items-center gap-3">
                   <div className="bg-orange-50 p-2 rounded-xl transform transition-all duration-300 hover:scale-110">
                     <span className="text-xl sm:text-2xl">🔥</span>
@@ -222,7 +214,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Nutrition Section */}
                 <div className="bg-blue-50 rounded-xl p-4">
                   <div className="flex items-center gap-3 mb-3">
                     <span className="text-xl sm:text-2xl">🍽️</span>
@@ -244,7 +235,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Healthiness Section */}
                 <div className="flex items-center gap-3">
                   <div className="bg-purple-50 p-2 rounded-xl transform transition-all duration-300 hover:scale-110">
                     <span className="text-xl sm:text-2xl">✅</span>
@@ -263,7 +253,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Health Tips Section */}
                 {analysisResult.suggestions && Array.isArray(analysisResult.suggestions) && (
                   <div className="bg-green-50 rounded-xl p-4">
                     <div className="flex items-center gap-3 mb-3">
@@ -294,7 +283,6 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Camera Modal */}
       {showCamera && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 animate-fade-in">
           <div className="bg-white rounded-2xl p-4 max-w-lg w-full transform transition-all duration-300 animate-scale-in">
