@@ -1,0 +1,43 @@
+[
+    {
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "website": "https://www.ethereum.org/, https://en.wikipedia.org/wiki/Ethereum",
+      "twitter": "https://twitter.com/ethereum",
+      "description": "Ethereum is a Layer 1 blockchain enabling smart contracts and decentralized applications.",
+      "tags": ["layer1", "smart contracts", "infrastructure"]
+    },
+    {
+      "symbol": "XRP",
+      "name": "XRP",
+      "website": "https://xrpl.org/",
+      "twitter": "https://twitter.com/Ripple",
+      "description": "XRP is a digital asset built for fast and low-cost international payments.",
+      "tags": ["payments", "financial", "layer1"]
+    },
+    {
+      "symbol": "USDT",
+      "name": "Tether USDt",
+      "website": "https://tether.to",
+      "twitter": "https://twitter.com/tether_to",
+      "description": "Tether is a stablecoin pegged to the US dollar, widely used for trading and payments.",
+      "tags": ["stablecoin", "usd-pegged", "payments"]
+    },
+    {
+      "symbol": "BNB",
+      "name": "BNB",
+      "website": "https://bnbchain.org/en",
+      "twitter": "https://twitter.com/bnbchain",
+      "description": "BNB is the native token of BNB Chain and Binance ecosystem, used for transactions and fees.",
+      "tags": ["exchange", "layer1", "ecosystem"]
+    },
+    {
+      "symbol": "USDC",
+      "name": "USDC",
+      "website": "https://www.usdc.com/",
+      "twitter": "https://twitter.com/circle",
+      "description": "USDC is a stablecoin fully backed by US dollars, issued by Circle.",
+      "tags": ["stablecoin", "usd-pegged", "payments"]
+    }
+  ]
+  
